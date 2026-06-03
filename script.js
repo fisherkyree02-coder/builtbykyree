@@ -1,10 +1,2 @@
-const contactForm = document.getElementById('contactForm');
-const successMessage = document.getElementById('successMessage');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (successMessage) successMessage.style.display = 'block';
-    contactForm.reset();
-  });
-}
+// Contact requests are submitted directly via the HTML form action.
+// No JavaScript is required for the current FormSubmit.co flow.

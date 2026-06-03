@@ -198,6 +198,12 @@ textarea {
   color: #102a43;
 }
 
+.form-note {
+  margin-top: 0.75rem;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
 .success-message {
   display: none;
   margin-top: 0.5rem;
@@ -212,6 +218,73 @@ textarea {
   border: 1px solid #e2e8f0;
 }
 
+.pricing {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.pricing h2 {
+  color: white;
+  margin: 0 0 2rem;
+}
+
+.pricing-card {
+  background: white;
+  color: #102a43;
+  border-radius: 24px;
+  padding: 2.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+}
+
+.pricing-card h3 {
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
+}
+
+.price {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #2563eb;
+  margin: 0 0 0.5rem;
+}
+
+.price-description {
+  margin: 1.5rem 0 1rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.price-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.price-features li {
+  padding: 0.75rem 0;
+  color: #334e68;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.price-features li:last-child {
+  border-bottom: none;
+}
+
+.price-features li::before {
+  content: "✓ ";
+  color: #16a34a;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.price-note {
+  margin: 1.5rem 0 0;
+  font-size: 0.95rem;
+  color: #617d98;
+}
+
 @media (max-width: 900px) {
   .hero,
   .contact-content {
@@ -220,6 +293,14 @@ textarea {
 
   .hero {
     padding: 3rem 0;
+  }
+
+  .pricing-card {
+    padding: 2rem;
+  }
+
+  .price {
+    font-size: 2.75rem;
   }
 }
 
