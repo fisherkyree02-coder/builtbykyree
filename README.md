@@ -10,9 +10,12 @@ A simple landing page for a service that helps business owners who do not yet ha
 ## Files
 
 - `index.html` — main website page
-- `style.css` — design and layout styles
-- `script.js` — optional JavaScript placeholder
+- `services.html` — services page
+- `portfolio.html` — portfolio and examples page
+- `faq.html` — frequently asked questions page
 - `thank-you.html` — submission confirmation page
+- `style.css` — design and layout styles
+- `script.js` — contact form backend integration and submission logic
 
 ## Usage
 
@@ -45,6 +48,14 @@ https://fisherkyree02-coder.github.io/builtbykyree
 If the Pages site does not appear immediately, open the repository Settings → Pages and confirm the branch is set to `gh-pages` or the workflow deployment is enabled.
 
 > The contact form is configured to use FormSubmit.co and will send the form details to `builtbykyree@gmail.com`, then redirect the user to `thank-you.html`.
+
+## Custom domain support
+
+A `CNAME` file has been added to the repository so you can use a custom domain. Update the `CNAME` file with your domain name and then add the same domain in GitHub Pages settings.
+
+## Payment integration
+
+The website includes a PayPal payment button for the $200 Launch Package. If you want a different payment provider, we can swap it for Stripe or another checkout flow.
 
 ## Pricing
 

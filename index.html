@@ -3,21 +3,40 @@
   <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BuiltByKyree — Launch Your Business Website</title>
-  <meta name="description" content="BuiltByKyree helps local businesses get online with simple, modern websites. Contact builtbykyree@gmail.com to get started." />
-  <meta name="keywords" content="small business website, local business website, launch website, BuiltByKyree" />
-  <meta property="og:title" content="BuiltByKyree — Get your business online" />
-  <meta property="og:description" content="We help business owners without a website launch a modern online presence." />
+  <meta name="theme-color" content="#1d4ed8" />
+  <title>BuiltByKyree | Business Website Services</title>
+  <meta name="description" content="BuiltByKyree helps local businesses get online with a modern website for just $200. Launch fast, attract local customers, and grow your credibility." />
+  <meta name="keywords" content="small business website, local business website, website design, business website, BuiltByKyree, $200 website" />
+  <meta property="og:title" content="BuiltByKyree | Business Website Services" />
+  <meta property="og:description" content="Launch a professional business website for $200 and start capturing customers online." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fisherkyree02-coder.github.io/builtbykyree/" />
+  <meta property="og:site_name" content="BuiltByKyree" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="author" content="BuiltByKyree" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="hero">
+    <div class="topbar">
+      <a class="logo" href="index.html">BuiltByKyree</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html#about">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="faq.html">FAQ</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
     <div class="hero-content">
       <p class="eyebrow">BuiltByKyree</p>
       <h1>Get your company online with a website designed to elevate your brand</h1>
       <p>We help business owners without a website launch a modern online presence, attract customers, and grow credibility.</p>
-      <a class="btn primary" href="#pricing">View Pricing</a>
+      <div class="hero-actions">
+        <a class="btn primary" href="#pricing">View Pricing</a>
+        <a class="btn secondary" href="https://www.paypal.com/paypalme/builtbykyree/200" target="_blank" rel="noopener">Pay $200</a>
+      </div>
       <p class="contact-quick">Contact: <a href="mailto:builtbykyree@gmail.com">builtbykyree@gmail.com</a> · <a href="tel:+19736067087">(973) 606-7087</a></p>
     </div>
     <div class="hero-image">
@@ -99,6 +118,10 @@
           <li>Deployment to GitHub Pages</li>
           <li>Domain setup assistance</li>
         </ul>
+        <div class="pricing-actions">
+          <a class="btn primary" href="#contact">Book Now</a>
+          <a class="btn secondary" href="https://www.paypal.com/paypalme/builtbykyree/200" target="_blank" rel="noopener">Pay $200</a>
+        </div>
         <p class="price-note">One-time fee. Get your business online in days, not months.</p>
       </div>
     </div>
@@ -130,6 +153,8 @@
           <textarea id="message" name="message" rows="4" placeholder="Tell us about your business" required></textarea>
 
           <button type="submit" class="btn primary">Send Request</button>
+          <p class="success-message" id="successMessage">Thank you! Your request has been submitted.</p>
+          <p class="error-message" id="errorMessage">Something went wrong. Please try again or email builtbykyree@gmail.com.</p>
           <p class="form-note">After you submit, the form will send an email through FormSubmit.co and redirect to a thank-you page.</p>
         </form>
         <div class="or">Or use this free contact option:</div>
