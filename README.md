@@ -57,6 +57,23 @@ A `CNAME` file has been added to the repository so you can use a custom domain. 
 
 The website includes a PayPal payment button for the $200 Launch Package. If you want a different payment provider, we can swap it for Stripe or another checkout flow.
 
+### Stripe checkout (optional server)
+
+This repo includes a small example Node server to create Stripe Checkout sessions. It is not required for the site to work, but if you want card payments via Stripe follow these steps:
+
+1. Install dependencies and run the server:
+
+```bash
+cd server
+npm install
+export STRIPE_SECRET_KEY=sk_test_...   # Windows (PowerShell): $env:STRIPE_SECRET_KEY="sk_test_..."
+npm start
+```
+
+2. From the Plans page click "Pay with Card (Stripe)" — the site will call `http://localhost:4242/create-checkout-session` which creates a Stripe Checkout session and redirects the browser to Stripe's hosted checkout.
+
+3. Set `STRIPE_SECRET_KEY` to your Stripe secret key before starting the server. The server uses `success_url` and `cancel_url` that point to the GitHub Pages pages.
+
 ## Pricing
 
 **Launch Package: $200**

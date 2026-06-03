@@ -37,5 +37,42 @@ if (contactForm) {
         errorMessage.style.display = 'block';
       }
     }
+
+      // Stripe checkout: find buttons with .stripe-pay and POST to server to create a Checkout Session
+      async function startStripeCheckout(planName, amountCents) {
+        try {
+          const resp = await fetch('http://localhost:4242/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ plan: planName, amount: amountCents })
+          });
+
+          if (!resp.ok) {
+            throw new Error('Failed to create checkout session');
+          }
+
+          const data = await resp.json();
+          if (data.url) {
+            window.location = data.url;
+          } else {
+            throw new Error('No checkout URL returned');
+          }
+        } catch (err) {
+          alert('Could not start Stripe checkout. See console for details.');
+          console.error(err);
+        }
+      }
+
+      // Attach handlers to any stripe-pay buttons on the page
+      document.addEventListener('DOMContentLoaded', () => {
+        const stripeButtons = document.querySelectorAll('.stripe-pay');
+        stripeButtons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const plan = btn.getAttribute('data-plan') || 'Service';
+            const amount = parseInt(btn.getAttribute('data-amount') || '0', 10);
+            startStripeCheckout(plan, amount);
+          });
+        });
+      });
   });
 }
