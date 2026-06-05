@@ -1,6 +1,7 @@
 const express = require('express');
 const Stripe = require('stripe');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
@@ -10,10 +11,12 @@ const PORT = process.env.PORT || 4242;
 const STRIPE_SECRET = process.env.STRIPE_SECRET_KEY;
 
 if (!STRIPE_SECRET) {
-  console.warn('Warning: STRIPE_SECRET_KEY not set. The server will run but cannot create sessions.');
+  console.error('STRIPE_SECRET_KEY is not set. Set it in environment variables or a .env file.');
+  console.error('See server/.env.example for an example. Exiting.');
+  process.exit(1);
 }
 
-const stripe = STRIPE_SECRET ? Stripe(STRIPE_SECRET) : null;
+const stripe = Stripe(STRIPE_SECRET);
 
 app.post('/create-checkout-session', async (req, res) => {
   if (!stripe) {

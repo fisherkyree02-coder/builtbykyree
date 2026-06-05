@@ -66,13 +66,21 @@ This repo includes a small example Node server to create Stripe Checkout session
 ```bash
 cd server
 npm install
-export STRIPE_SECRET_KEY=sk_test_...   # Windows (PowerShell): $env:STRIPE_SECRET_KEY="sk_test_..."
+export STRIPE_SECRET_KEY=sk_test_...   # macOS / Linux
+# Windows PowerShell:
+$env:STRIPE_SECRET_KEY="sk_test_..."
+# Windows CMD:
+set STRIPE_SECRET_KEY=sk_test_...
 npm start
 ```
 
 2. From the Plans page click "Pay with Card (Stripe)" — the site will call `http://localhost:4242/create-checkout-session` which creates a Stripe Checkout session and redirects the browser to Stripe's hosted checkout.
 
 3. Set `STRIPE_SECRET_KEY` to your Stripe secret key before starting the server. The server uses `success_url` and `cancel_url` that point to the GitHub Pages pages.
+
+Note: For local development you can copy `server/.env.example` to `server/.env` and put your secret key there. Never commit `.env` to Git.
+
+If you deploy the server (Vercel, Netlify, Render, etc.), add the `STRIPE_SECRET_KEY` in the service's environment variables/secret settings instead of committing it.
 
 ## Pricing
 
