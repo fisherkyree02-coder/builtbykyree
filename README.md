@@ -82,6 +82,37 @@ Note: For local development you can copy `server/.env.example` to `server/.env` 
 
 If you deploy the server (Vercel, Netlify, Render, etc.), add the `STRIPE_SECRET_KEY` in the service's environment variables/secret settings instead of committing it.
 
+### Deploying the serverless endpoint (recommended)
+
+You can deploy the included serverless function to Vercel so you don't run a local server. Vercel will host an `/api/create-checkout-session` endpoint that the site will call when hosted.
+
+1. Install the Vercel CLI and login:
+
+```bash
+npm i -g vercel
+vercel login
+```
+
+2. From the repo root, deploy and set the `STRIPE_SECRET_KEY` in Vercel's dashboard or with the CLI:
+
+```bash
+vercel env add STRIPE_SECRET_KEY production
+# follow prompts to paste your secret key
+vercel --prod
+```
+
+After deploying, the Plans page will call `/.api/create-checkout-session` (Vercel maps `/api/*`) and redirect customers to Stripe Checkout without you running a local server.
+
+### Stripe Payment Links (no server)
+
+If you prefer not to run any server at all, create a Stripe Payment Link in your Stripe Dashboard (Products → Payment Links). Once created, copy the Payment Link URL and replace the placeholder hrefs in `plans.html` for each plan. This provides a hosted, no-code checkout URL that you can paste directly into the site.
+
+Steps to create a Payment Link:
+1. In Stripe Dashboard create a Product and Price.
+2. Go to Payment Links → Create a payment link → choose product/price → Create.
+3. Copy the generated URL and paste it into `plans.html` replacing the `https://buy.stripe.com/test_placeholder_*` placeholders.
+
+
 ## Pricing
 
 **Launch Package: $200**

@@ -41,7 +41,11 @@ if (contactForm) {
       // Stripe checkout: find buttons with .stripe-pay and POST to server to create a Checkout Session
       async function startStripeCheckout(planName, amountCents) {
         try {
-          const resp = await fetch('http://localhost:4242/create-checkout-session', {
+          const serverEndpoint = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'http://localhost:4242/create-checkout-session'
+            : '/api/create-checkout-session';
+
+          const resp = await fetch(serverEndpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ plan: planName, amount: amountCents })
