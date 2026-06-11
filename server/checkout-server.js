@@ -10,22 +10,35 @@ app.use(express.json());
 const PORT = process.env.PORT || 4242;
 const STRIPE_SECRET = process.env.STRIPE_SECRET_KEY;
 
-if (!STRIPE_SECRET) {
+const MOCK_STRIPE = !STRIPE_SECRET || STRIPE_SECRET === 'sk_test_example' || process.env.MOCK_STRIPE === '1';
+
+if (!STRIPE_SECRET && !MOCK_STRIPE) {
   console.error('STRIPE_SECRET_KEY is not set. Set it in environment variables or a .env file.');
   console.error('See server/.env.example for an example. Exiting.');
   process.exit(1);
 }
 
-const stripe = Stripe(STRIPE_SECRET);
+let stripe = null;
+if (!MOCK_STRIPE) {
+  stripe = Stripe(STRIPE_SECRET);
+} else {
+  console.warn('Running in MOCK_STRIPE mode — Stripe network calls will be skipped.');
+}
 
 app.post('/create-checkout-session', async (req, res) => {
-  if (!stripe) {
-    return res.status(500).json({ error: 'Stripe secret key not configured on server.' });
-  }
-
   const { plan = 'Service', amount = 20000 } = req.body;
 
   try {
+    if (MOCK_STRIPE) {
+      const fakeUrl = `https://example.com/checkout/session_mock_${Date.now()}`;
+      console.log('Mock session created for', plan, amount, fakeUrl);
+      return res.json({ url: fakeUrl });
+    }
+
+    if (!stripe) {
+      return res.status(500).json({ error: 'Stripe secret key not configured on server.' });
+    }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',

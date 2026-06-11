@@ -1,0 +1,9 @@
+{
+  "name": "builtbykyree-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "vercel-build": "echo \"No build step (static site).\"",
+    "build": "npm run vercel-build"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "Launch Package": {
+    "priceId": "price_mock_launch_20000",
+    "url": "https://example.com/pay/price_mock_launch_20000"
+  },
+  "Domain Setup": {
+    "priceId": "price_mock_domain_30000",
+    "url": "https://example.com/pay/price_mock_domain_30000"
+  }
+}
